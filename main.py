@@ -1,6 +1,6 @@
 import os, requests, tzdata
 from pathlib import Path
-import zoneinfo
+from zoneinfo import ZoneInfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
 # from pytz import timezone    
@@ -24,7 +24,7 @@ def FileName(Folder):
     # Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
     # now = datetime.now(tzinfo=Tz)
     # print(now)
-    dt = datetime(2020, 10, 31, 12, tzinfo=zoneinfo("America/Los_Angeles"))
+    dt = datetime(2020, 10, 31, 12, tzinfo=ZoneInfo("America/Los_Angeles"))
     print(dt)
 
 
