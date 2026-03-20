@@ -20,11 +20,10 @@ def FolderManagement():
         print("Folder is real.")
     return GlobalPodFolder
 
-def FileName(Folder):
+def LocalTime(Folder):
     LocalTz = ZoneInfo("Asia/Jerusalem")
     dt = datetime.now(LocalTz)
     return dt
-
 
 def DownloadJson(JsonUrl, DownloadPath):
     rGetJson = requests.get(JsonUrl,
@@ -32,12 +31,15 @@ def DownloadJson(JsonUrl, DownloadPath):
     if rGetJson.status_code != 200:
         print("Failed")
     else:
-        # print(rGetJson.content)
         print("Success")
+        with open(DownloadPath + "sourcejson.json", "w", encoding="utf-8") as JsonFile:
+            JsonFile.write(rGetJson.content)
+
 
 
 GlobalPodFolder = FolderManagement()
-FileName(GlobalPodFolder)
+LocalTime(GlobalPodFolder)
+DownloadJson(SourceJson, GlobalPodFolder)
 
 
 # DownloadJson(SourceJson)
