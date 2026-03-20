@@ -84,7 +84,8 @@ END:VCALENDAR"""
         # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
 
 
-        local_dt = local.localize(EventLocalTime, is_dst=None)
+        # local_dt = local.localize(EventLocalTime, is_dst=None)
+        local_dt = local.localize(EventLocalTime)
         EventUtcTime = local_dt.astimezone(pytz.utc)
 
         EventSummary = EventTitle
