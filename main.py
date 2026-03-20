@@ -64,36 +64,28 @@ def JsonIntoIcs(JsonName, IcsName):
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
             EventUnixTime = JsonName[JsonObject][3]
+            EventUid = str(EventUnixTime)+Place
             EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
             EventSummary = EventTitle
-            EventDTSTAMP = "19700101T000000Z"
             EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
             EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
             EventSEQUENCE = 0
             EventLOCATION = str(Place)
             EventSTATUS = "CONFIRMED"
-            EventUid = str(EventUnixTime)+Place
             IcsBlankTemplate = Template("""
             BEGIN:VEVENT
-            UID:$UID
-            SUMMARY:$SUMMARY
-            DTSTAMP:$DTSTAMP
-            DTSTART:$DTSTART
-            DTEND:$DTEND
+            UID:{EventUid}
+            SUMMARY:{EventTitle}
+            DTSTAMP:19700101T000000Z
+            DTSTART:{EventDTSTART}
+            DTEND:{EventDTEND}
             SEQUENCE:2026
-            LOCATION:$LOCATION
-            STATUS:$STATUS
+            LOCATION:${EventLOCATION}
+            STATUS:CONFIRMED
             END:VEVENT
             """) 
-            IcsFilledTemplate = IcsBlankTemplate.substitute(
-            "UID":whatevr,
-            "SUMMARY":whatevr,
-            "DTSTAMP":whatevr,
-            "DTSTART":whatevr,
-            "DTEND":whatevr,
-            "LOCATION":whatevr,
-            "STATUS":whatevr
-            )
+            print(IcsBlankTemplate)
+
 
     IcsHeader = """
     BEGIN:VCALENDAR
@@ -149,13 +141,13 @@ def JsonIntoIcs(JsonName, IcsName):
 
 
 
-# GlobalPodFolder = FolderManagement()
-# GlobalTx = LocalTime(GlobalPodFolder)
-# GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
-# JsonIntoIcs(GlobalJsonFile, "test2")
+GlobalPodFolder = FolderManagement()
+GlobalTx = LocalTime(GlobalPodFolder)
+GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
+JsonIntoIcs(GlobalJsonFile, "test2")
 
 
-TESTDATE = 1774011703
-testdate = datetime.fromtimestamp(TESTDATE+900)
-print(testdate)
-print(datetime.strftime(testdate, "%Y%m%dT%H%M%S"))
+# TESTDATE = 1774011703
+# testdate = datetime.fromtimestamp(TESTDATE+900)
+# print(testdate)
+# print(datetime.strftime(testdate, "%Y%m%dT%H%M%S"))
