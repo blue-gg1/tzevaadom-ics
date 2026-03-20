@@ -4,6 +4,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
+from string import Template
 # from pytz import timezone    
 
 
@@ -62,19 +63,42 @@ def JsonIntoIcs(JsonName, IcsName):
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
-        EventUnixTime = JsonName[JsonObject][3]
-        EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
-        EventSummary = EventTitle
-        EventDTSTAMP = "19700101T000000Z"
-        EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
-        EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
-        EventSEQUENCE = 0
-        EventLOCATION = str(Place)
-        EventSTATUS = "CONFIRMED"
-        EventUid = str(EventUnixTime)+Place
-
-
-        print(EventTitle, EventUnixTime, EventLocalTime)
+            EventUnixTime = JsonName[JsonObject][3]
+            EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
+            EventSummary = EventTitle
+            EventDTSTAMP = "19700101T000000Z"
+            EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
+            EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
+            EventSEQUENCE = 0
+            EventLOCATION = str(Place)
+            EventSTATUS = "CONFIRMED"
+            EventUid = str(EventUnixTime)+Place
+            ExampleIcsFrom = Template("""
+            BEGIN:VEVENT
+            UID:http://2026.f1calendar.com/#GP0_2026_fp1
+            SUMMARY:F1: FP1 (Australian Grand Prix)
+            DTSTAMP:20260314T222650Z
+            DTSTART:20260306T013000Z
+            DTEND:20260306T023000Z
+            SEQUENCE:2026
+            GEO:-37.8373;144.9666
+            LOCATION:Melbourne
+            STATUS:CONFIRMED
+            CATEGORIES:FP1,F1
+            END:VEVENT
+            BEGIN:VEVENT
+            UID:http://2026.f1calendar.com/#GP0_2026_fp2
+            SUMMARY:F1: FP2 (Australian Grand Prix)
+            DTSTAMP:20260314T222650Z
+            DTSTART:20260306T050000Z
+            DTEND:20260306T060000Z
+            SEQUENCE:2026
+            GEO:-37.8373;144.9666
+            LOCATION:Melbourne
+            STATUS:CONFIRMED
+            CATEGORIES:FP2,F1
+            END:VEVENT
+            """) 
 
     IcsHeader = """
     BEGIN:VCALENDAR
