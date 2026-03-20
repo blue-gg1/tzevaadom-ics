@@ -104,7 +104,7 @@ END:VEVENT""")
                 LOCATION = EventLOCATION
             )
             IcsFinal += IcsTemplateFill
-
+        IcsFinal += IcsFooter
     return(IcsFinal)
 
 
