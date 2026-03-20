@@ -1,4 +1,5 @@
 import os, requests, tzdata, json
+from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
