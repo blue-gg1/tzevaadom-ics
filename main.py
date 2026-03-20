@@ -4,7 +4,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
-from string import Template
+from string.templatelib import Template
+
+
 # from pytz import timezone    
 
 
@@ -84,7 +86,7 @@ def JsonIntoIcs(JsonName, IcsName):
             STATUS:CONFIRMED
             END:VEVENT
             """) 
-            print(IcsBlankTemplate)
+            print(IcsBlankTemplate.strings)
 
 
     IcsHeader = """
