@@ -61,19 +61,19 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 def JsonIntoIcs(JsonName, IcsName):
     RawJsonLen = len(JsonName)
     IcsFinal = ""
-    IcsHeader = """
-    BEGIN:VCALENDAR
-    VERSION:2.0
-    CALSCALE:GREGORIAN
-    PRODID:f1calendar.com
-    METHOD:PUBLISH
-    X-PUBLISHED-TTL:PT1H
-    BEGIN:VEVENT"""
-    IcsFooter = """
-    END:VEVENT
-    END:VCALENDAR
-    """
-    for JsonObject in range(0, RawJsonLen):
+    IcsHeader = """BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+PRODID:f1calendar.com
+METHOD:PUBLISH
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT"""
+    IcsFooter = """END:VEVENT
+    END:VCALENDAR"""
+    
+    IcsFinal += IcsHeader
+    # for JsonObject in range(0, RawJsonLen):
+    for JsonObject in range(0, 10):
         # print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
@@ -103,12 +103,9 @@ END:VEVENT""")
                 DTEND = EventDTEND,
                 LOCATION = EventLOCATION
             )
-            print(IcsTemplateFill)
+            IcsFinal += IcsTemplateFill
 
-
-
-
-    return()
+    return(IcsFinal)
 
 
 
@@ -116,9 +113,9 @@ END:VEVENT""")
 GlobalPodFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalPodFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
-JsonIntoIcs(GlobalJsonFile, "test2")
+IcsContent = JsonIntoIcs(GlobalJsonFile, "test2")
 
-
+print(IcsContent)
 # TESTDATE = 1774011703
 # testdate = datetime.fromtimestamp(TESTDATE+900)
 # print(testdate)
