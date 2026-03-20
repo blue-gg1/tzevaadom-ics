@@ -71,15 +71,14 @@ END:VCALENDAR"""
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
-            EventUnixTime = JsonName[JsonObject][3]
-            EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
-            EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
-            EventSummary = EventTitle
-            EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
-            EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
-            EventLOCATION = str(Place)
-
-            IcsTemplate = Template("""
+        EventUnixTime = JsonName[JsonObject][3]
+        EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
+        EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
+        EventSummary = EventTitle
+        EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
+        EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
+        EventLOCATION = str(Place)
+        IcsTemplate = Template("""
 BEGIN:VEVENT
 UID:$UID
 SUMMARY:$TITLE
