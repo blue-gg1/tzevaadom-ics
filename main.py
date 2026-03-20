@@ -36,7 +36,7 @@ def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
             RawJsonFile.write(rGetJson.content)
     
     RawJson = json.loads(rGetJson.content)
-    print(RawJson[0])
+    print(RawJson[0][3])
     
     # print(json.loads(rGetJson.content))
     
