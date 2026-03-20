@@ -70,15 +70,15 @@ END:VCALENDAR"""
     # for JsonObject in range(0, RawJsonLen):
     for JsonObject in range(0, 10):
         EventTitle = "Red Alert in "
-        for Place in JsonName[JsonObject][2]:
-            EventTitle += Place
+        # for Place in JsonName[JsonObject][2]:
+        #     EventTitle += Place
+        EventTitle += JsonName[JsonObject][2][0]
         EventUnixTime = JsonName[JsonObject][3]
         EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
         EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
         EventSummary = EventTitle
         EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
         EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
-        EventLOCATION = str(Place)
         IcsTemplate = Template("""
 BEGIN:VEVENT
 UID:$UID
@@ -87,7 +87,6 @@ DTSTAMP:19700101T000000Z
 DTSTART:$DTSTART
 DTEND:$DTEND
 SEQUENCE:0
-STATUS:CONFIRMED
 END:VEVENT""")
         IcsTemplateFill = IcsTemplate.substitute(
             UID = EventUid,
