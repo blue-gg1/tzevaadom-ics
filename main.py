@@ -1,7 +1,9 @@
 import os, requests
 from pathlib import Path
 from settings import SourceJson
-from datetime import 
+from datetime import datetime, date, timezone, tzinfo
+from pytz import timezone    
+
 
 
 def FolderManagement():
@@ -16,6 +18,10 @@ def FolderManagement():
     else:
         print("Folder is real.")
     return GlobalPodFolder
+
+def FileName(Folder):
+    now = datetime.now(timezone."Asia/Jerusalem")
+
 
 
 def DownloadJson(JsonUrl, DownloadPath):
