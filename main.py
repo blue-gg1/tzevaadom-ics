@@ -64,8 +64,7 @@ def JsonIntoIcs(JsonName):
 VERSION:2.0
 CALSCALE:GREGORIAN
 PRODID:redalert.local
-METHOD:PUBLISH
-BEGIN:VTIMEZONE"""
+METHOD:PUBLISH"""
     IcsFooter = """
 END:VCALENDAR"""
     
