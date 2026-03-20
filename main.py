@@ -1,5 +1,6 @@
-import os, requests, zoneinfo
+import os, requests, tzdata
 from pathlib import Path
+import zoneinfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
 # from pytz import timezone    
@@ -20,9 +21,10 @@ def FolderManagement():
     return GlobalPodFolder
 
 def FileName(Folder):
-    Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
-    now = datetime.now(tzinfo=Tz)
-    print(now)
+    # Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
+    # now = datetime.now(tzinfo=Tz)
+    # print(now)
+    print(datetime(2020, 11, 1, 1, tzinfo=ZoneInfo("America/Los_Angeles")))
 
 
 
