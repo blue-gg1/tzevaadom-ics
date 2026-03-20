@@ -7,18 +7,19 @@ from datetime import datetime, date, timezone, tzinfo
 from string import Template # fuck me
 
 
-# it takes this long to run and the file is 105 MB (110,669,824 bytes) big
+# it takes this long to run 
 # Days              : 0
 # Hours             : 0
-# Minutes           : 11
-# Seconds           : 34
-# Milliseconds      : 638
-# Ticks             : 6946384871
-# TotalDays         : 0.00803979730439815
-# TotalHours        : 0.192955135305556
-# TotalMinutes      : 11.5773081183333
-# TotalSeconds      : 694.6384871
-# TotalMilliseconds : 694638.4871
+# Minutes           : 10
+# Seconds           : 27
+# Milliseconds      : 954
+# Ticks             : 6279543132
+# TotalDays         : 0.00726798973611111
+# TotalHours        : 0.174431753666667
+# TotalMinutes      : 10.46590522
+# TotalSeconds      : 627.9543132
+# TotalMilliseconds : 627954.3132
+
 
 # have some work todo: https://icalendar.org/validator.html.html?url=https://tzevaadom-ics.pages.dev/Test_2_CF.ics#results
 
