@@ -65,7 +65,7 @@ def JsonIntoIcs(JsonName, IcsName):
         EventUnixTime = JsonName[JsonObject][3]
         EventLocalTIme = datetime.fromtimestamp(JsonName[JsonObject][3])
         EventSummary = EventTitle
-        EventDTSTAMP = ""
+        EventDTSTAMP = "19700101T000000Z"
         EventDTSTART = ""
         EventDTEND = ""
         EventSEQUENCE = 0
@@ -139,3 +139,4 @@ def JsonIntoIcs(JsonName, IcsName):
 TESTDATE = 1774011703
 testdate = datetime.fromtimestamp(TESTDATE)
 print(testdate)
+print(datetime.strftime(testdate, "%Y%m%dT%H%M%S"))
