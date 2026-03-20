@@ -105,7 +105,7 @@ END:VEVENT""")
                 LOCATION = EventLOCATION
             )
             IcsFinal += IcsTemplateFill
-        IcsFinal += IcsFooter
+    IcsFinal += IcsFooter
     return(IcsFinal)
 
 def WriteIcsToFile(IcsContent, Path, Filename):
