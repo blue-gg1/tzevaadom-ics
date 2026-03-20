@@ -36,7 +36,13 @@ def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
             RawJsonFile.write(rGetJson.content)
     
     RawJson = json.loads(rGetJson.content)
-    print(RawJson[0][3])
+    
+    # for UnixTimeStamp in 
+    
+    RawJsonLen = len(RawJson)
+    for JsonObject in range(0, RawJsonLen):
+        print(RawJson[JsonObject][3])
+    # print(RawJson[0][3])
     
     # print(json.loads(rGetJson.content))
     
