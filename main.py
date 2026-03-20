@@ -109,7 +109,6 @@ DTSTAMP:19700101T000000Z
 DTSTART:$DTSTART
 DTEND:$DTEND
 SEQUENCE:0
-LOCATION:$LOCATION
 STATUS:CONFIRMED
 END:VEVENT""")
             IcsTemplateFill = IcsTemplate.substitute(
@@ -117,7 +116,6 @@ END:VEVENT""")
                 TITLE = EventSummary,
                 DTSTART = EventDTSTART,
                 DTEND = EventDTEND,
-                LOCATION = EventLOCATION
             )
             IcsFinal += IcsTemplateFill
     IcsFinal += IcsFooter
