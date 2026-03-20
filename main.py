@@ -72,8 +72,8 @@ BEGIN:VEVENT"""
 END:VCALENDAR"""
     
     IcsFinal += IcsHeader
-    # for JsonObject in range(0, RawJsonLen):
-    for JsonObject in range(0, 10):
+    for JsonObject in range(0, RawJsonLen):
+    # for JsonObject in range(0, 10):
         # print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
