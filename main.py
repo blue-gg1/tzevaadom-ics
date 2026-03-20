@@ -22,10 +22,10 @@ def FolderManagement():
 
 def FileName(Folder):
     # Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
-    # now = datetime.now(tzinfo=Tz)
-    # print(now)
-    dt = datetime(2020, 10, 31, 12, tzinfo=ZoneInfo("America/Los_Angeles"))
-    print(dt)
+    now = datetime.now(tzinfo=ZoneInfo("Asia/Jerusalem"))
+    print(now)
+    # dt = datetime(2020, 10, 31, 12, tzinfo=ZoneInfo("Asia/Jerusalem"))
+    # print(dt)
 
 
 
