@@ -1,4 +1,4 @@
-import os, requests, json, random
+import os, requests, json, random, pytz
 # from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -58,6 +58,8 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 
 
 def JsonIntoIcs(JsonName):
+    local = pytz.timezone("Asia/Jerusalem")
+    
     RawJsonLen = len(JsonName)
     IcsFinal = ""
     IcsHeader = """BEGIN:VCALENDAR
@@ -79,8 +81,14 @@ END:VCALENDAR"""
         EventUnixTime = JsonName[JsonObject][3]
         EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
         EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
+        # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
+
+
+        local_dt = local.localize(EventLocalTime, is_dst=None)
+        EventUtcTime = local_dt.astimezone(pytz.utc)
+
         EventSummary = EventTitle
-        EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
+        EventDTSTART = datetime.strftime(EventUtcTime, "%Y%m%dT%H%M%S")
         EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
         IcsTemplate = Template("""
 BEGIN:VEVENT
