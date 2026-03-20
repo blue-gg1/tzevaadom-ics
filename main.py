@@ -21,8 +21,6 @@ from string import Template # fuck me
 # TotalSeconds      : 4.9448624
 # TotalMilliseconds : 4944.8624
 
-
-
 # have some work todo: https://icalendar.org/validator.html.html?url=https://tzevaadom-ics.pages.dev/Test_2_CF.ics#results
 # Measure-Command {& "python.exe" "main.py"}
 
@@ -66,7 +64,9 @@ def JsonIntoIcs(JsonName):
 VERSION:2.0
 CALSCALE:GREGORIAN
 PRODID:redalert.local
-METHOD:PUBLISH"""
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Jerusalem"""
     IcsFooter = """
 END:VCALENDAR"""
     
