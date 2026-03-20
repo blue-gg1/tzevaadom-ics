@@ -67,8 +67,8 @@ METHOD:PUBLISH"""
 END:VCALENDAR"""
     
     IcsFinal += IcsHeader
-    for JsonObject in range(0, RawJsonLen):
-    # for JsonObject in range(0, 10):
+    # for JsonObject in range(0, RawJsonLen):
+    for JsonObject in range(0, 10):
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
