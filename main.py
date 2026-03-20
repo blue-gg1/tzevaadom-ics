@@ -78,14 +78,13 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 def JsonIntoIcs(JsonName):
     RawJsonLen = len(JsonName)
     IcsFinal = ""
-    IcsHeader = """BEGIN:VCALENDAR\\r\\n
-VERSION:2.0\\r\\n
-CALSCALE:GREGORIAN\\r\\n
-
-PRODID:redalert.local\\r\\n
-METHOD:PUBLISH\\r\\n
-X-PUBLISHED-TTL:PT1H\\r\\n"""
-    IcsFooter = """END:VCALENDAR\\r\\n"""
+    IcsHeader = """BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+PRODID:redalert.local
+METHOD:PUBLISH
+X-PUBLISHED-TTL:PT1H"""
+    IcsFooter = """END:VCALENDAR"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
