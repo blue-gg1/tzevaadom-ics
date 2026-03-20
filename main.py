@@ -94,7 +94,7 @@ END:VCALENDAR"""
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
             EventUnixTime = JsonName[JsonObject][3]
-            EventUid = str(EventUnixTime)+Place
+            EventUid = str(EventUnixTime)+"@redalert.local"
             EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
             EventSummary = EventTitle
             EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
