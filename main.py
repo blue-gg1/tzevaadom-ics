@@ -20,6 +20,8 @@ from string import Template # fuck me
 # TotalSeconds      : 694.6384871
 # TotalMilliseconds : 694638.4871
 
+# have some work todo: https://icalendar.org/validator.html.html?url=https://tzevaadom-ics.pages.dev/Test_2_CF.ics#results
+
 # python.exe" "main.py"
 
 # from pytz import timezone    
@@ -76,15 +78,13 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 def JsonIntoIcs(JsonName):
     RawJsonLen = len(JsonName)
     IcsFinal = ""
-    IcsHeader = """BEGIN:VCALENDAR
-VERSION:2.0
-CALSCALE:GREGORIAN
-PRODID:f1calendar.com
-METHOD:PUBLISH
-X-PUBLISHED-TTL:PT1H
-BEGIN:VEVENT"""
-    IcsFooter = """END:VEVENT
-END:VCALENDAR"""
+    IcsHeader = """BEGIN:VCALENDAR\r\n
+VERSION:2.0\r\n
+CALSCALE:GREGORIAN\r\n
+PRODID:f1calendar.com\r\n
+METHOD:PUBLISH\r\n
+X-PUBLISHED-TTL:PT1H\r\n"""
+    IcsFooter = """END:VCALENDAR\r\n"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
@@ -102,15 +102,15 @@ END:VCALENDAR"""
             EventLOCATION = str(Place)
 
             IcsTemplate = Template("""
-BEGIN:VEVENT
-UID:$UID
-SUMMARY:$TITLE
-DTSTAMP:19700101T000000Z
-DTSTART:$DTSTART
-DTEND:$DTEND
-SEQUENCE:0
-STATUS:CONFIRMED
-END:VEVENT""")
+BEGIN:VEVENT\r\n
+UID:$UID\r\n
+SUMMARY:$TITLE\r\n
+DTSTAMP:19700101T000000Z\r\n
+DTSTART:$DTSTART\r\n
+DTEND:$DTEND\r\n
+SEQUENCE:0\r\n
+STATUS:CONFIRMED\r\n
+END:VEVENT\r\n""")
             IcsTemplateFill = IcsTemplate.substitute(
                 UID = EventUid,
                 TITLE = EventSummary,
