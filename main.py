@@ -122,7 +122,7 @@ END:VEVENT""")
     return(IcsFinal)
 
 def WriteIcsToFile(IcsContent, Path, Filename):
-    with open (Path / Filename, "w", encoding="utf-8") as IcsOnDisk:
+    with open (Path / Filename, "w", encoding="utf-8", newline='\r\n') as IcsOnDisk:
         IcsOnDisk.write(IcsContent)
 
 
