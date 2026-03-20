@@ -72,8 +72,8 @@ VTIMEZONE:"""
 END:VCALENDAR"""
     
     IcsFinal += IcsHeader
-    # for JsonObject in range(0, RawJsonLen):
-    for JsonObject in range(0, 10):
+    for JsonObject in range(0, RawJsonLen):
+    # for JsonObject in range(0, 10):
         EventTitle = "Red Alert in "
         # for Place in JsonName[JsonObject][2]:
         #     EventTitle += Place
@@ -127,9 +127,9 @@ def GitAddGitPush(JsonUrl, LiveUrl):
 
 GlobalProdFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalProdFolder)
-GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
+GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Prod")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
-WriteIcsToFile(IcsContent, GlobalProdFolder, "Test.ics")
+WriteIcsToFile(IcsContent, GlobalProdFolder, "Prod.ics")
 # GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test.ics""") # need to add check if ics os over 100mb
 
 # print(IcsContent)
