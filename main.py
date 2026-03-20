@@ -86,7 +86,7 @@ BEGIN:VEVENT
 UID:$UID
 SUMMARY:$TITLE
 DTSTAMP:19700101T000000Z
-DTSTART;TZID:Asia/Jerusalem:$DTSTART
+DTSTART;TZID=Asia/Jerusalem:$DTSTART
 DTEND:$DTEND
 SEQUENCE:0
 END:VEVENT""")
@@ -121,7 +121,7 @@ GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
 WriteIcsToFile(IcsContent, GlobalProdFolder, "Test.ics")
-GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test.ics""") # need to add check if ics os over 100mb
+# GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test.ics""") # need to add check if ics os over 100mb
 
 # print(IcsContent)
 # TESTDATE = 1774011703
