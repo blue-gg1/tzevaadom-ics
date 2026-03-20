@@ -78,13 +78,13 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 def JsonIntoIcs(JsonName):
     RawJsonLen = len(JsonName)
     IcsFinal = ""
-    IcsHeader = """BEGIN:VCALENDAR\r\n
-VERSION:2.0\r\n
-CALSCALE:GREGORIAN\r\n
-PRODID:f1calendar.com\r\n
-METHOD:PUBLISH\r\n
-X-PUBLISHED-TTL:PT1H\r\n"""
-    IcsFooter = """END:VCALENDAR\r\n"""
+    IcsHeader = """BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+PRODID:f1calendar.com
+METHOD:PUBLISH
+X-PUBLISHED-TTL:PT1H"""
+    IcsFooter = """END:VCALENDAR"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
@@ -102,15 +102,15 @@ X-PUBLISHED-TTL:PT1H\r\n"""
             EventLOCATION = str(Place)
 
             IcsTemplate = Template("""
-BEGIN:VEVENT\r\n
-UID:$UID\r\n
-SUMMARY:$TITLE\r\n
-DTSTAMP:19700101T000000Z\r\n
-DTSTART:$DTSTART\r\n
-DTEND:$DTEND\r\n
-SEQUENCE:0\r\n
-STATUS:CONFIRMED\r\n
-END:VEVENT\r\n""")
+BEGIN:VEVENT
+UID:$UID
+SUMMARY:$TITLE
+DTSTAMP:19700101T000000Z
+DTSTART:$DTSTART
+DTEND:$DTEND
+SEQUENCE:0
+STATUS:CONFIRMED
+END:VEVENT""")
             IcsTemplateFill = IcsTemplate.substitute(
                 UID = EventUid,
                 TITLE = EventSummary,
