@@ -24,7 +24,8 @@ def FileName(Folder):
     LocalTz = ZoneInfo("Asia/Jerusalem")
     # now = datetime.now(tzinfo=ZoneInfo("Asia/Jerusalem"))
     # print(now)
-    dt = datetime(2020, 10, 31, 12, tzinfo=LocalTz)
+    dt = datetime.now(timezone.tzname(LocalTz))
+    # dt = datetime(2020, 10, 31, 12, tzinfo=LocalTz)
     print(dt)
 
 
