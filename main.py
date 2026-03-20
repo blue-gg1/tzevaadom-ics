@@ -88,13 +88,13 @@ DTEND:$DTEND
 SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT""")
-            IcsTemplateFill = IcsTemplate.substitute(
-                UID = EventUid,
-                TITLE = EventSummary,
-                DTSTART = EventDTSTART,
-                DTEND = EventDTEND,
+        IcsTemplateFill = IcsTemplate.substitute(
+            UID = EventUid,
+            TITLE = EventSummary,
+            DTSTART = EventDTSTART,
+            DTEND = EventDTEND,
             )
-            IcsFinal += IcsTemplateFill
+        IcsFinal += IcsTemplateFill
     IcsFinal += IcsFooter
     return(IcsFinal)
 
