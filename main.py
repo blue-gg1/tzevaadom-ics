@@ -46,9 +46,9 @@ def JsonIntoIcs(JsonName, IcsName):
         print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
 
 
+
+
 GlobalPodFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalPodFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
 JsonIntoIcs(GlobalJsonFile, "test2")
-
-# DownloadJson(SourceJson)
