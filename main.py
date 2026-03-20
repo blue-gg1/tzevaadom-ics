@@ -69,7 +69,7 @@ METHOD:PUBLISH
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT"""
     IcsFooter = """END:VEVENT
-    END:VCALENDAR"""
+END:VCALENDAR"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
