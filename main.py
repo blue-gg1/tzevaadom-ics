@@ -4,7 +4,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
-from string.templatelib import Template
+from string.templatelib import Template # fuck me
 
 
 # from pytz import timezone    
