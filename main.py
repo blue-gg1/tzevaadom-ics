@@ -130,18 +130,26 @@ def WriteIcsToFile(IcsContent, Path, Filename):
     return(FilePath)
 
 
-
-
+def GitAddGitPush(JsonUrl, LiveUrl):
+    print("making the git commit")
+    GitCommitMessage = "Updated the json from " + JsonUrl + " live now here: "+ LiveUrl
+    print(os.system("git add ."))
+    print(os.system("git commit -am "+chr(34)+GitCommitMessage+chr(34)))
+    print(os.system("git push"))
+    pass
 
 GlobalProdFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
 WriteIcsToFile(IcsContent, GlobalProdFolder, "Test_2_CF.ics")
+GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test_2_CF.ics""")
 
 
 
-print(IcsContent)
+
+
+# print(IcsContent)
 # TESTDATE = 1774011703
 # testdate = datetime.fromtimestamp(TESTDATE+900)
 # print(testdate)
