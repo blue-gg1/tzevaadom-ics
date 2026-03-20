@@ -87,7 +87,7 @@ UID:$UID
 SUMMARY:$TITLE
 DTSTAMP:19700101T000000Z
 DTSTART;TZID=Asia/Jerusalem:$DTSTART
-DTEND:$DTEND
+DTEND;TZID=Asia/Jerusalem:$DTEND
 SEQUENCE:0
 END:VEVENT""")
         IcsTemplateFill = IcsTemplate.substitute(
