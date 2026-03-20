@@ -32,14 +32,20 @@ def DownloadJson(JsonUrl, DownloadPath):
         print("Failed")
     else:
         print("Success")
-        with open(DownloadPath / "sourcejson.json", "wb") as JsonFile:
-            JsonFile.write(rGetJson.content)
+        with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
+            RawJsonFile.write(rGetJson.content)
+    return(RawJsonFile)
+
+def JsonToDict(Json, DictName):
+    print(type(Json))
+    pass
 
 
 
 GlobalPodFolder = FolderManagement()
-LocalTime(GlobalPodFolder)
-DownloadJson(SourceJson, GlobalPodFolder)
+GlobalTx = LocalTime(GlobalPodFolder)
+GlobalJsonFile = DownloadJson(SourceJson, GlobalPodFolder)
+JsonToDict(GlobalJsonFile, "test")
 
 
 # DownloadJson(SourceJson)
