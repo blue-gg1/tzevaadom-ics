@@ -1,0 +1,2 @@
+0 * * * * /usr/sbin/python /app/code/main.py
+* * * * * echo $(date) > /app/now.txt
