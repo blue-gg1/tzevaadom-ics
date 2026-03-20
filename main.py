@@ -63,18 +63,18 @@ def JsonIntoIcs(JsonName, IcsName):
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
         EventUnixTime = JsonName[JsonObject][3]
-        EventLocalTIme = datetime.fromtimestamp(JsonName[JsonObject][3])
+        EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
         EventSummary = EventTitle
         EventDTSTAMP = "19700101T000000Z"
-        EventDTSTART = ""
-        EventDTEND = ""
+        EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
+        EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
         EventSEQUENCE = 0
         EventLOCATION = str(Place)
         EventSTATUS = "CONFIRMED"
         EventUid = str(EventUnixTime)+Place
 
 
-        print(EventTitle, EventUnixTime, EventLocalTIme)
+        print(EventTitle, EventUnixTime, EventLocalTime)
 
     IcsHeader = """
     BEGIN:VCALENDAR
@@ -137,6 +137,6 @@ def JsonIntoIcs(JsonName, IcsName):
 
 
 TESTDATE = 1774011703
-testdate = datetime.fromtimestamp(TESTDATE)
+testdate = datetime.fromtimestamp(TESTDATE+900)
 print(testdate)
 print(datetime.strftime(testdate, "%Y%m%dT%H%M%S"))
