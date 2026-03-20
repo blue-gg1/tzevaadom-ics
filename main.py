@@ -1,4 +1,4 @@
-import os, requests, tzdata, json
+import os, requests, tzdata, json, pytz
 # from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -6,6 +6,21 @@ from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
 # from pytz import timezone    
 
+
+    # def is_dst(zonename):
+    #     """Check if it is currently DST in a given timezone."""
+    #     tz = pytz.timezone(zonename)
+    #     # Get the current UTC time and make it aware
+    #     now_utc = pytz.utc.localize(datetime.utcnow())
+    #     # Convert to the target timezone and check the dst() offset
+    #     return now_utc.astimezone(tz).dst() != timedelta(0)
+
+    # # Usage examples (results depend on the current date and time)
+    # print(f"Is DST active in Los Angeles? {is_dst('America/Los_Angeles')}")
+    # print(f"Is DST active in London? {is_dst('Europe/London')}")
+
+    # for JsonObject in range(0, RawJsonLen):
+    #     print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3])) # the unix time is local and not UTC
 
 
 def FolderManagement():
@@ -42,8 +57,23 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 
 def JsonIntoIcs(JsonName, IcsName):
     RawJsonLen = len(JsonName)
-    for JsonObject in range(0, RawJsonLen):
-        print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3])) # the unix time is local and not UTC
+    IcsHeader = """
+    BEGIN:VCALENDAR
+    PRODID:-//BlueGG1 Cal//GG1 Calendar 1.0//EN
+    VERSION:2.0
+    CALSCALE:GREGORIAN
+    METHOD:PUBLISH
+    X-WR-CALNAME:Red Alerts
+    X-WR-TIMEZONE:UTC
+    X-WR-CALDESC:Duck and Cover
+    """ #keep it utc and add the +2 later(??)
+    
+    IcsFooter = """
+    END:VEVENT
+    END:VCALENDAR
+    """
+
+    return()
 
 
 
