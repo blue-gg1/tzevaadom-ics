@@ -6,6 +6,7 @@ from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
 from string import Template # fuck me
 
+# Measure-Command {& "python.exe" "main.py"}
 
 # it takes this long to run 
 # Days              : 0
@@ -22,6 +23,8 @@ from string import Template # fuck me
 
 
 # have some work todo: https://icalendar.org/validator.html.html?url=https://tzevaadom-ics.pages.dev/Test_2_CF.ics#results
+# Measure-Command {& "python.exe" "main.py"}
+
 
 def FolderManagement():
     script_directory = Path(os.path.dirname(os.path.abspath(__file__)))
