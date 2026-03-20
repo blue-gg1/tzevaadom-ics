@@ -25,7 +25,7 @@ def LocalTime(Folder):
     dt = datetime.now(LocalTz)
     return dt
 
-def DownloadJson(JsonUrl, DownloadPath):
+def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
     rGetJson = requests.get(JsonUrl,
                           )
     if rGetJson.status_code != 200:
@@ -34,18 +34,17 @@ def DownloadJson(JsonUrl, DownloadPath):
         print("Success")
         with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
             RawJsonFile.write(rGetJson.content)
-    return(RawJsonFile)
+    
+    
+    
+    # return(RawJsonFile)
 
-def JsonToDict(Json, DictName):
-    print(type(Json))
-    pass
 
 
 
 GlobalPodFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalPodFolder)
-GlobalJsonFile = DownloadJson(SourceJson, GlobalPodFolder)
-JsonToDict(GlobalJsonFile, "test")
+GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
 
 
 # DownloadJson(SourceJson)
