@@ -1,4 +1,4 @@
-import os, requests, tzdata
+import os, requests, tzdata, json
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
@@ -34,7 +34,7 @@ def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
         print("Success")
         with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
             RawJsonFile.write(rGetJson.content)
-    
+    print(json.loads(rGetJson.content))
     
     
     # return(RawJsonFile)
