@@ -1,5 +1,5 @@
 import os, requests, tzdata, json
-from ics import Calendar, Event
+# from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
@@ -26,7 +26,7 @@ def LocalTime(Folder):
     dt = datetime.now(LocalTz)
     return dt
 
-def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
+def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
     rGetJson = requests.get(JsonUrl,
                           )
     if rGetJson.status_code != 200:
@@ -36,27 +36,19 @@ def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
         with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
             RawJsonFile.write(rGetJson.content)
     
-    RawJson = json.loads(rGetJson.content)
-    
-    # for UnixTimeStamp in 
-    
-    RawJsonLen = len(RawJson)
+    JsonName = json.loads(rGetJson.content)
+    return(JsonName)
+
+
+def JsonIntoIcs(JsonName, IcsName):
+    RawJsonLen = len(JsonName)
     for JsonObject in range(0, RawJsonLen):
-        print(RawJson[JsonObject][3], datetime.fromtimestamp(RawJson[JsonObject][3]))
-        
-    # print(RawJson[0][3])
-    
-    # print(json.loads(rGetJson.content))
-    
-    
-    # return(RawJsonFile)
-
-
+        print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
 
 
 GlobalPodFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalPodFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
-
+JsonIntoIcs(GlobalJsonFile, "test2")
 
 # DownloadJson(SourceJson)
