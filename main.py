@@ -73,7 +73,7 @@ def JsonIntoIcs(JsonName, IcsName):
             EventLOCATION = str(Place)
             EventSTATUS = "CONFIRMED"
             EventUid = str(EventUnixTime)+Place
-            ExampleIcsFrom = Template("""
+            IcsBlankTemplate = Template("""
             BEGIN:VEVENT
             UID:$UID
             SUMMARY:$SUMMARY
@@ -85,6 +85,15 @@ def JsonIntoIcs(JsonName, IcsName):
             STATUS:$STATUS
             END:VEVENT
             """) 
+            IcsFilledTemplate = IcsBlankTemplate.substitute(
+            "UID":whatevr,
+            "SUMMARY":whatevr,
+            "DTSTAMP":whatevr,
+            "DTSTART":whatevr,
+            "DTEND":whatevr,
+            "LOCATION":whatevr,
+            "STATUS":whatevr
+            )
 
     IcsHeader = """
     BEGIN:VCALENDAR
