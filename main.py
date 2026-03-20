@@ -1,4 +1,4 @@
-import os, requests, tzdata, json, pytz
+import os, requests, tzdata, json, pytz, random
 # from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -94,7 +94,7 @@ METHOD:PUBLISH"""
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
             EventUnixTime = JsonName[JsonObject][3]
-            EventUid = str(EventUnixTime)+"@redalert.local"
+            EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
             EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
             EventSummary = EventTitle
             EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
