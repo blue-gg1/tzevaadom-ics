@@ -23,8 +23,7 @@ def FolderManagement():
 def FileName(Folder):
     LocalTz = ZoneInfo("Asia/Jerusalem")
     # now = datetime.now(tzinfo=ZoneInfo("Asia/Jerusalem"))
-    # print(now)
-    dt = datetime.now(timezone.tzname(LocalTz))
+    dt = datetime.now(ZoneInfo(LocalTz))
     # dt = datetime(2020, 10, 31, 12, tzinfo=LocalTz)
     print(dt)
 
