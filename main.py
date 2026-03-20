@@ -7,6 +7,8 @@ from datetime import datetime, date, timezone, tzinfo
 from string import Template # fuck me
 
 
+# & "c:\Users\steve ballmer\Documents\code\tzevaadom-ics\.venv\Scripts\python.exe" "c:/Users/steve ballmer/Documents/code/tzevaadom-ics/main.py"
+
 # from pytz import timezone    
 
 
