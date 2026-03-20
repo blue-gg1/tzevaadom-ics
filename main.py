@@ -43,7 +43,7 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 def JsonIntoIcs(JsonName, IcsName):
     RawJsonLen = len(JsonName)
     for JsonObject in range(0, RawJsonLen):
-        print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
+        print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3])) # the unix time is local and not UTC
 
 
 
