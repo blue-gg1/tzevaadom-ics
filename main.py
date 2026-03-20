@@ -1,8 +1,8 @@
-import os, requests
+import os, requests, zoneinfo
 from pathlib import Path
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
-from pytz import timezone    
+# from pytz import timezone    
 
 
 
@@ -20,7 +20,9 @@ def FolderManagement():
     return GlobalPodFolder
 
 def FileName(Folder):
-    now = datetime.now(timezone."Asia/Jerusalem")
+    Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
+    now = datetime.now(tzinfo=Tz)
+    print(now)
 
 
 
@@ -33,5 +35,9 @@ def DownloadJson(JsonUrl, DownloadPath):
         # print(rGetJson.content)
         print("Success")
 
-FolderManagement()
-DownloadJson(SourceJson)
+
+GlobalPodFolder = FolderManagement()
+FileName(GlobalPodFolder)
+
+
+# DownloadJson(SourceJson)
