@@ -58,7 +58,7 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
     return(JsonName)
 
 
-def JsonIntoIcs(JsonName, IcsName):
+def JsonIntoIcs(JsonName):
     RawJsonLen = len(JsonName)
     IcsFinal = ""
     IcsHeader = """BEGIN:VCALENDAR
@@ -107,13 +107,25 @@ END:VEVENT""")
         IcsFinal += IcsFooter
     return(IcsFinal)
 
+def WriteIcsToFile(IcsContent, Path, Filename):
+    with open (Path / Filename, "w", encoding="utf-8") as IcsOnDisk:
+        IcsOnDisk.write(IcsContent)
+
+
+    FilePath = ""  
+    return(FilePath)
 
 
 
-GlobalPodFolder = FolderManagement()
-GlobalTx = LocalTime(GlobalPodFolder)
-GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
-IcsContent = JsonIntoIcs(GlobalJsonFile, "test2")
+
+
+GlobalProdFolder = FolderManagement()
+GlobalTx = LocalTime(GlobalProdFolder)
+GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
+IcsContent = JsonIntoIcs(GlobalJsonFile)
+WriteIcsToFile(IcsContent, GlobalProdFolder, "lol.ics")
+
+
 
 print(IcsContent)
 # TESTDATE = 1774011703
