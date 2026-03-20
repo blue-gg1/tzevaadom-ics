@@ -16,9 +16,9 @@ WORKDIR /app
 RUN mkdir /app/code
 
 # Copy the script and requirements for The File
-COPY main.py /app/code/main.py
-COPY settings.py /app/code/kan/settings.py
-COPY requirements.txt /app/code/requirements.txt
+COPY ../main.py /app/code/main.py
+COPY ../settings.py /app/code/kan/settings.py
+COPY ../requirements.txt /app/code/requirements.txt
 
 # update the system
 RUN dnf upgrade --assumeyes
