@@ -57,6 +57,10 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 
 def JsonIntoIcs(JsonName, IcsName):
     RawJsonLen = len(JsonName)
+    for JsonObject in range(0, RawJsonLen):
+        print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
+        EventTitle = "Red Alert in " + JsonName[JsonObject][3]
+
     IcsHeader = """
     BEGIN:VCALENDAR
     PRODID:-//BlueGG1 Cal//GG1 Calendar 1.0//EN
@@ -68,6 +72,39 @@ def JsonIntoIcs(JsonName, IcsName):
     X-WR-CALDESC:Duck and Cover
     """ #keep it utc and add the +2 later(??)
     
+
+
+    #         PodcastEpisodeTitle = str(abs(i-EpisodesInJson))+" "+RawJson["podcast"]["episodes"][i]["title"]
+    #         PodcastEpisodeNotes = RawJson["podcast"]["episodes"][i]["show_notes"]
+    #         PodcastEpisodePatUrl = RawJson["podcast"]["episodes"][i]["url"]
+    #         PodcastEpisodeFileName = str(abs(i-EpisodesInJson)) + " " + PodcastEpisodeTitle.strip() + ".mp3"
+    #         PodcastEpisodePublished = RawJson["podcast"]["episodes"][i]["published"]
+    #         ExampleRssFromBBC = Template("""    <item>
+    #         <title>$TemplateTitle</title>
+    #         <description>$TemplateDescription</description>
+    #         <itunes:subtitle>pod feed.</itunes:subtitle>
+    #         <itunes:summary>pod feed.</itunes:summary>
+    #         <itunes:explicit>true</itunes:explicit>
+    #         <itunes:author>BBC</itunes:author>
+    #         <link>https://www.bbc.co.uk</link>
+    #         <pubDate>$TemplatePubDate</pubDate>
+    #         <enclosure url="$TemplateUrl" type="audio/mpeg"/>
+    #     </item>\r\n""")
+    #         # print(ExampleRssFromBBC)
+    #         ReadTemplateRss = ExampleRssFromBBC.substitute(
+    #             TemplateTitle = PodcastEpisodeTitle.replace("&","&amp;"),
+    #             # TemplateDescription = (PodcastEpisodeNotes.replace("&","&amp;")),
+    #             TemplateDescription = re.sub('<[^<]+?>', "  ", PodcastEpisodeNotes),
+    #             TemplatePubDate = PodcastEpisodePublished,
+    #             # TemplateUrl = PodcastEpisodePatUrl
+    #             TemplateUrl = PodcastEpisodePatUrl.replace("&","&amp;")
+    #             )
+    #         XmlRssFinal += ReadTemplateRss
+    #     XmlRssFooter = """    </channel>
+    # </rss>"""
+    #     XmlRssFinal +=XmlRssFooter
+
+
     IcsFooter = """
     END:VEVENT
     END:VCALENDAR
