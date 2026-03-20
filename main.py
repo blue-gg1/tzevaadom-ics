@@ -4,7 +4,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from settings import SourceJson
 from datetime import datetime, date, timezone, tzinfo
-from string.templatelib import Template # fuck me
+from string import Template # fuck me
 
 
 # from pytz import timezone    
@@ -74,31 +74,9 @@ def JsonIntoIcs(JsonName, IcsName):
             EventSEQUENCE = 0
             EventLOCATION = str(Place)
             EventSTATUS = "CONFIRMED"
-            IcsBlankTemplate = Template("""
-            BEGIN:VEVENT
-            UID:{EventUid}
-            SUMMARY:{EventTitle}
-            DTSTAMP:19700101T000000Z
-            DTSTART:{EventDTSTART}
-            DTEND:{EventDTEND}
-            SEQUENCE:2026
-            LOCATION:${EventLOCATION}
-            STATUS:CONFIRMED
-            END:VEVENT
-            """) 
-            print(IcsBlankTemplate.strings)
+            
 
-
-    IcsHeader = """
-    BEGIN:VCALENDAR
-    PRODID:-//BlueGG1 Cal//GG1 Calendar 1.0//EN
-    VERSION:2.0
-    CALSCALE:GREGORIAN
-    METHOD:PUBLISH
-    X-WR-CALNAME:Red Alerts
-    X-WR-TIMEZONE:UTC
-    X-WR-CALDESC:Duck and Cover
-    """ #keep it utc and add the +2 later(??)
+            
     
 
 
