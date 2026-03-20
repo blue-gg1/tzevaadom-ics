@@ -64,6 +64,16 @@ def JsonIntoIcs(JsonName, IcsName):
             EventTitle += Place
         EventUnixTime = JsonName[JsonObject][3]
         EventLocalTIme = datetime.fromtimestamp(JsonName[JsonObject][3])
+        EventSummary = EventTitle
+        EventDTSTAMP = ""
+        EventDTSTART = ""
+        EventDTEND = ""
+        EventSEQUENCE = 0
+        EventLOCATION = str(Place)
+        EventSTATUS = "CONFIRMED"
+        EventUid = str(EventUnixTime)+Place
+
+
         print(EventTitle, EventUnixTime, EventLocalTIme)
 
     IcsHeader = """
