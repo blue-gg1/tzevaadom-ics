@@ -62,8 +62,6 @@ def JsonIntoIcs(JsonName, IcsName):
         EventTitle = "Red Alert in "
         for Place in JsonName[JsonObject][2]:
             EventTitle += Place
-        
-        
         EventUnixTime = JsonName[JsonObject][3]
         EventLocalTIme = datetime.fromtimestamp(JsonName[JsonObject][3])
         print(EventTitle, EventUnixTime, EventLocalTIme)
