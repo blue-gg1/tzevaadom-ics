@@ -4,7 +4,6 @@ FROM fedora:latest
 # easy deploy command "echo > /app/code/main.py && vi /app/code/main.py && python /app/code/main.py"
 # better docker command "docker build . -t test-ics"
 
-
 # Set the timezone
 ENV TZ="Asia/Jerusalem"
 # fuck with the timezone.
@@ -16,12 +15,10 @@ WORKDIR /app
 # Make app folders
 RUN mkdir /app/code
 
-
 # Copy the script and requirements for The File
 COPY main.py /app/code/main.py
 COPY settings.py /app/code/kan/settings.py
 COPY requirements.txt /app/code/requirements.txt
-
 
 # update the system
 RUN dnf upgrade --assumeyes
@@ -43,6 +40,7 @@ RUN pip install -r /app/code/requirements.txt --resume-retries 10
 
 # fuck with the timezone again in order to make sure no updates unfucked with the timezone when we fucked with the timezone last time
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 
 # run the cronjob
 CMD ["crond", "-n"]
