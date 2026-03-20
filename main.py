@@ -75,28 +75,14 @@ def JsonIntoIcs(JsonName, IcsName):
             EventUid = str(EventUnixTime)+Place
             ExampleIcsFrom = Template("""
             BEGIN:VEVENT
-            UID:http://2026.f1calendar.com/#GP0_2026_fp1
-            SUMMARY:F1: FP1 (Australian Grand Prix)
-            DTSTAMP:20260314T222650Z
-            DTSTART:20260306T013000Z
-            DTEND:20260306T023000Z
+            UID:$UID
+            SUMMARY:$SUMMARY
+            DTSTAMP:$DTSTAMP
+            DTSTART:$DTSTART
+            DTEND:$DTEND
             SEQUENCE:2026
-            GEO:-37.8373;144.9666
-            LOCATION:Melbourne
-            STATUS:CONFIRMED
-            CATEGORIES:FP1,F1
-            END:VEVENT
-            BEGIN:VEVENT
-            UID:http://2026.f1calendar.com/#GP0_2026_fp2
-            SUMMARY:F1: FP2 (Australian Grand Prix)
-            DTSTAMP:20260314T222650Z
-            DTSTART:20260306T050000Z
-            DTEND:20260306T060000Z
-            SEQUENCE:2026
-            GEO:-37.8373;144.9666
-            LOCATION:Melbourne
-            STATUS:CONFIRMED
-            CATEGORIES:FP2,F1
+            LOCATION:$LOCATION
+            STATUS:$STATUS
             END:VEVENT
             """) 
 
