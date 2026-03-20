@@ -32,7 +32,7 @@ def DownloadJson(JsonUrl, DownloadPath):
         print("Failed")
     else:
         print("Success")
-        with open(DownloadPath / "sourcejson.json", "w", encoding="utf-8") as JsonFile:
+        with open(DownloadPath / "sourcejson.json", "wb", encoding="utf-8") as JsonFile:
             JsonFile.write(rGetJson.content)
 
 
