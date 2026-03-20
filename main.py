@@ -86,7 +86,8 @@ BEGIN:VEVENT"""
             EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
             EventLOCATION = str(Place)
 
-            IcsTemplate = Template("""BEGIN:VEVENT
+            IcsTemplate = Template("""
+BEGIN:VEVENT
 UID:$UID
 SUMMARY:$TITLE
 DTSTAMP:19700101T000000Z
