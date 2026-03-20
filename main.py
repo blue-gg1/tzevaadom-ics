@@ -24,7 +24,8 @@ def FileName(Folder):
     # Tz = zoneinfo.ZoneInfo(key="America/Los_Angeles")
     # now = datetime.now(tzinfo=Tz)
     # print(now)
-    print(datetime(2020, 11, 1, 1, tzinfo=ZoneInfo("America/Los_Angeles")))
+    dt = datetime(2020, 10, 31, 12, tzinfo=zoneinfo("America/Los_Angeles"))
+    print(dt)
 
 
 
