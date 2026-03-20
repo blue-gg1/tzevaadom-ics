@@ -130,7 +130,12 @@ def JsonIntoIcs(JsonName, IcsName):
 
 
 
-GlobalPodFolder = FolderManagement()
-GlobalTx = LocalTime(GlobalPodFolder)
-GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
-JsonIntoIcs(GlobalJsonFile, "test2")
+# GlobalPodFolder = FolderManagement()
+# GlobalTx = LocalTime(GlobalPodFolder)
+# GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalPodFolder, "Test")
+# JsonIntoIcs(GlobalJsonFile, "test2")
+
+
+TESTDATE = 1732652211
+testdate = datetime.fromtimestamp(TESTDATE)
+print(testdate)
