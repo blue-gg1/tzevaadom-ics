@@ -26,14 +26,14 @@ def LocalTime(Folder):
     return dt
 
 def DownloadJsonDict(JsonUrl, DownloadPath, DictName):
-    rGetJson = requests.get(JsonUrl,
-                          )
-    if rGetJson.status_code != 200:
-        print("Failed")
-    else:
-        print("Success")
-        with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
-            RawJsonFile.write(rGetJson.content)
+    # rGetJson = requests.get(JsonUrl,
+    #                       )
+    # if rGetJson.status_code != 200:
+    #     print("Failed")
+    # else:
+    #     print("Success")
+    #     with open(DownloadPath / "sourcejson.json", "wb") as RawJsonFile:
+    #         RawJsonFile.write(rGetJson.content)
     print(json.loads(rGetJson.content))
     
     
