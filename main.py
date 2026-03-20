@@ -84,7 +84,7 @@ CALSCALE:GREGORIAN
 PRODID:redalert.local
 METHOD:PUBLISH"""
     IcsFooter = """
-    END:VCALENDAR"""
+END:VCALENDAR"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
