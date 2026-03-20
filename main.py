@@ -124,7 +124,7 @@ GlobalProdFolder = FolderManagement()
 GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
-WriteIcsToFile(IcsContent, GlobalProdFolder, "lol.ics")
+WriteIcsToFile(IcsContent, GlobalProdFolder, "Test1CF.ics")
 
 
 
