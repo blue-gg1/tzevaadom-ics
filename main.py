@@ -8,18 +8,19 @@ from string import Template # fuck me
 
 # Measure-Command {& "python.exe" "main.py"}
 
-# it takes this long to run 
+# it takes this long to run for a 4kb file.
 # Days              : 0
 # Hours             : 0
-# Minutes           : 10
-# Seconds           : 27
-# Milliseconds      : 954
-# Ticks             : 6279543132
-# TotalDays         : 0.00726798973611111
-# TotalHours        : 0.174431753666667
-# TotalMinutes      : 10.46590522
-# TotalSeconds      : 627.9543132
-# TotalMilliseconds : 627954.3132
+# Minutes           : 0
+# Seconds           : 4
+# Milliseconds      : 944
+# Ticks             : 49448624
+# TotalDays         : 5.72322037037037E-05
+# TotalHours        : 0.00137357288888889
+# TotalMinutes      : 0.0824143733333333
+# TotalSeconds      : 4.9448624
+# TotalMilliseconds : 4944.8624
+
 
 
 # have some work todo: https://icalendar.org/validator.html.html?url=https://tzevaadom-ics.pages.dev/Test_2_CF.ics#results
@@ -122,7 +123,7 @@ GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
 WriteIcsToFile(IcsContent, GlobalProdFolder, "Test_2_CF.ics")
-# GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test_2_CF.ics""") # need to add check if ics os over 100mb
+GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test_2_CF.ics""") # need to add check if ics os over 100mb
 
 
 
