@@ -82,9 +82,9 @@ def JsonIntoIcs(JsonName):
 VERSION:2.0
 CALSCALE:GREGORIAN
 PRODID:redalert.local
-METHOD:PUBLISH
-X-PUBLISHED-TTL:PT1H"""
-    IcsFooter = """END:VCALENDAR"""
+METHOD:PUBLISH"""
+    IcsFooter = """
+    END:VCALENDAR"""
     
     IcsFinal += IcsHeader
     # for JsonObject in range(0, RawJsonLen):
