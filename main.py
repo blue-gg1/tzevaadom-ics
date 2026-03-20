@@ -120,7 +120,7 @@ GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Test")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
 WriteIcsToFile(IcsContent, GlobalProdFolder, "Test_2_CF.ics")
-# GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test_2_CF.ics""") # need to add check if ics os over 100mb
+GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Test_2_CF.ics""") # need to add check if ics os over 100mb
 
 
 
