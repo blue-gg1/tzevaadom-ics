@@ -60,6 +60,19 @@ def DownloadJsonDict(JsonUrl, DownloadPath, JsonName):
 
 def JsonIntoIcs(JsonName, IcsName):
     RawJsonLen = len(JsonName)
+    IcsFinal = ""
+    IcsHeader = """
+    BEGIN:VCALENDAR
+    VERSION:2.0
+    CALSCALE:GREGORIAN
+    PRODID:f1calendar.com
+    METHOD:PUBLISH
+    X-PUBLISHED-TTL:PT1H
+    BEGIN:VEVENT"""
+    IcsFooter = """
+    END:VEVENT
+    END:VCALENDAR
+    """
     for JsonObject in range(0, RawJsonLen):
         # print(JsonName[JsonObject][3], datetime.fromtimestamp(JsonName[JsonObject][3]))
         EventTitle = "Red Alert in "
@@ -71,50 +84,31 @@ def JsonIntoIcs(JsonName, IcsName):
             EventSummary = EventTitle
             EventDTSTART = datetime.strftime(EventLocalTime, "%Y%m%dT%H%M%S")
             EventDTEND = datetime.strftime(datetime.fromtimestamp((JsonName[JsonObject][3]+15)), "%Y%m%dT%H%M%S")
-            EventSEQUENCE = 0
             EventLOCATION = str(Place)
-            EventSTATUS = "CONFIRMED"
-            
 
-            
-    
-
-
-    #         PodcastEpisodeTitle = str(abs(i-EpisodesInJson))+" "+RawJson["podcast"]["episodes"][i]["title"]
-    #         PodcastEpisodeNotes = RawJson["podcast"]["episodes"][i]["show_notes"]
-    #         PodcastEpisodePatUrl = RawJson["podcast"]["episodes"][i]["url"]
-    #         PodcastEpisodeFileName = str(abs(i-EpisodesInJson)) + " " + PodcastEpisodeTitle.strip() + ".mp3"
-    #         PodcastEpisodePublished = RawJson["podcast"]["episodes"][i]["published"]
-    #         ExampleRssFromBBC = Template("""    <item>
-    #         <title>$TemplateTitle</title>
-    #         <description>$TemplateDescription</description>
-    #         <itunes:subtitle>pod feed.</itunes:subtitle>
-    #         <itunes:summary>pod feed.</itunes:summary>
-    #         <itunes:explicit>true</itunes:explicit>
-    #         <itunes:author>BBC</itunes:author>
-    #         <link>https://www.bbc.co.uk</link>
-    #         <pubDate>$TemplatePubDate</pubDate>
-    #         <enclosure url="$TemplateUrl" type="audio/mpeg"/>
-    #     </item>\r\n""")
-    #         # print(ExampleRssFromBBC)
-    #         ReadTemplateRss = ExampleRssFromBBC.substitute(
-    #             TemplateTitle = PodcastEpisodeTitle.replace("&","&amp;"),
-    #             # TemplateDescription = (PodcastEpisodeNotes.replace("&","&amp;")),
-    #             TemplateDescription = re.sub('<[^<]+?>', "  ", PodcastEpisodeNotes),
-    #             TemplatePubDate = PodcastEpisodePublished,
-    #             # TemplateUrl = PodcastEpisodePatUrl
-    #             TemplateUrl = PodcastEpisodePatUrl.replace("&","&amp;")
-    #             )
-    #         XmlRssFinal += ReadTemplateRss
-    #     XmlRssFooter = """    </channel>
-    # </rss>"""
-    #     XmlRssFinal +=XmlRssFooter
+            IcsTemplate = Template("""
+            BEGIN:VEVENT
+            UID:$UID
+            SUMMARY:$TITLE
+            DTSTAMP:19700101T000000Z
+            DTSTART:$DTSTART
+            DTEND:$DTEND
+            SEQUENCE:0
+            LOCATION:$LOCATION
+            STATUS:CONFIRMED
+            END:VEVENT\r\n
+            """)
+            IcsTemplateFill = IcsTemplate.substitute(
+                UID = EventUid,
+                TITLE = EventSummary,
+                DTSTART = EventDTSTART,
+                DTEND = EventDTEND,
+                LOCATION = EventLOCATION
+            )
+            print(IcsTemplateFill)
 
 
-    IcsFooter = """
-    END:VEVENT
-    END:VCALENDAR
-    """
+
 
     return()
 
