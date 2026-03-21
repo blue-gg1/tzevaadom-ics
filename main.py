@@ -80,8 +80,7 @@ END:VCALENDAR"""
         EventTitle += JsonName[JsonObject][2][0]
         EventUnixTime = JsonName[JsonObject][3]
 
-        EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])+"."+ str(len(str(list(itertools.chain.from_iterable(JsonName[JsonObject][2])))))+"."+str(JsonObject)
-        
+        EventUid = str(JsonObject)+"@"+str(EventUnixTime)+"."+str(JsonName[JsonObject][0])+"."+str(JsonName[JsonObject][1])        
         
         # EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])
         # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
