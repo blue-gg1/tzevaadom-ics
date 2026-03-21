@@ -1,7 +1,6 @@
 # DO NOT USE AS AN ALARM THIS IS MENT TO BE HISTORIC LOG. ALSO A WIP.
 
 # TODO: 
-0. fix uniq uid
 1. Fix TZ issues.
 2. Group alerts together
 3. add back full city list
