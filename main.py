@@ -79,7 +79,7 @@ END:VCALENDAR"""
         #     EventTitle += Place
         EventTitle += JsonName[JsonObject][2][0]
         EventUnixTime = JsonName[JsonObject][3]
-        EventUid = str(EventUnixTime)+"@redalert.local"+str(len(JsonName[JsonObject][2]))
+        EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])
         EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
         # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
 
@@ -131,7 +131,7 @@ GlobalTx = LocalTime(GlobalProdFolder)
 GlobalJsonFile = DownloadJsonDict(SourceJson, GlobalProdFolder, "Prod")
 IcsContent = JsonIntoIcs(GlobalJsonFile)
 WriteIcsToFile(IcsContent, GlobalProdFolder, "Prod.ics")
-GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Prod.ics""") # need to add check if ics os over 100mb
+# GitAddGitPush(SourceJson, """https://tzevaadom-ics.pages.dev/Prod.ics""") # need to add check if ics os over 100mb
 
 # print(IcsContent)
 # TESTDATE = 1774011703
