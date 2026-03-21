@@ -1,4 +1,4 @@
-import os, requests, json, random, pytz
+import os, requests, json, random, pytz, itertools
 # from ics import Calendar, Event
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -79,10 +79,13 @@ END:VCALENDAR"""
         #     EventTitle += Place
         EventTitle += JsonName[JsonObject][2][0]
         EventUnixTime = JsonName[JsonObject][3]
-        EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])
-        EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
-        # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
 
+        EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])+"."+ str(len(str(list(itertools.chain.from_iterable(JsonName[JsonObject][2])))))
+        
+        
+        # EventUid = str(EventUnixTime)+"@"+str(len(JsonName[JsonObject][2]))+"."+str(JsonName[JsonObject][1])
+        # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
+        EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
 
         # local_dt = local.localize(EventLocalTime, is_dst=None)
         local_dt = local.localize(EventLocalTime)
