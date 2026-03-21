@@ -79,7 +79,7 @@ END:VCALENDAR"""
         #     EventTitle += Place
         EventTitle += JsonName[JsonObject][2][0]
         EventUnixTime = JsonName[JsonObject][3]
-        EventUid = str(EventUnixTime)+"@redalert.local"+str(random.randint(0, 10))
+        EventUid = str(EventUnixTime)+"@redalert.local"+str(len(JsonName[JsonObject][2]))
         EventLocalTime = datetime.fromtimestamp(JsonName[JsonObject][3])
         # EventUtcTime = (datetime.fromtimestamp(JsonName[JsonObject][3]))
 
